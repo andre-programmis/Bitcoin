@@ -1,0 +1,12 @@
+import requests
+import json
+
+r = requests.get("https://blockchain.info/ru/ticker")
+
+d = json.loads(r.text)
+t = type(d)
+print(t)
+USD = d["USD"]["last"]
+RUB = d["RUB"]["last"]
+rez = RUB/USD
+print(str(rez))
