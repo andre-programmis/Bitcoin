@@ -1,0 +1,14 @@
+from lxml import html
+import requests
+
+link = 'https://city-yaroslavl.ru'
+page = requests.get(link)
+tree = html.fromstring(page.content)
+buyers = tree.xpath('//div[@class="column column--50"]/a/@href')
+print(buyers)
+
+for href in buyers:
+    page = requests.get(f'{link}{href}')
+    tree = html.fromstring(page.content)
+    buyers = tree.xpath('//div[@class="detail__text"]/text()')
+  
