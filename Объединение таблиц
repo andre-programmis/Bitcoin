@@ -1,0 +1,6 @@
+SELECT *
+fROM workers
+join branches
+    ON workers.branch_id=branches.id
+join departments
+    on departments.id=branches.id_depart
